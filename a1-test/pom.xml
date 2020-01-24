@@ -9,7 +9,7 @@
 
   <groupId>g1</groupId>
   <artifactId>a1-test</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
   <version>1.0</version>
 
   <name>a1-test</name>
@@ -144,13 +144,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.1</version>
-                <configuration>
-                    <includes>
-                        <include>${db.includes}</include>
-                    </includes>
-                </configuration>
                 <executions>
                     <execution>
+                        <id>integration-test-exec</id>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
@@ -159,6 +155,9 @@
                             <systemPropertyVariables>
                                 <test.port>${test_http_port}</test.port>
                             </systemPropertyVariables>
+                            <includes>
+                                <include>**/EndpointIT.java</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
