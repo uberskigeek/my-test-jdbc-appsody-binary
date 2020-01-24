@@ -34,7 +34,7 @@
 
   <dependencies>
     <dependency>
-        <groupId>org.eclipse.microprofile.config</groupId>
+        <groupId>org.eclipse.microprofile.health</groupId>
         <artifactId>microprofile-health-api</artifactId>
         <scope>provided</scope>
     </dependency>
