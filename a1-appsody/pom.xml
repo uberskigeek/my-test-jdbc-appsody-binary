@@ -4,11 +4,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <artifactId>a1</artifactId>
-    <groupId>g1</groupId>
-    <version>1.0</version>
-  </parent>
+   <parent>
+        <!--required parent POM-->
+        <groupId>dev.appsody</groupId>
+        <artifactId>java-openliberty</artifactId>
+        <version>[0.1, 0.2)</version>
+    </parent>
 
   <groupId>g1</groupId>
   <artifactId>a1-appsody</artifactId>
@@ -31,14 +32,12 @@
 
     <dependencies>
         <!-- example of adding a war file dependency -->
-        <!--
         <dependency>
-			<groupId>com.mywar</groupId>
-			<artifactId>modresorts</artifactId>
+			<groupId>g1</groupId>
+			<artifactId>a1-war</artifactId>
 			<version>1.0</version>
 			<type>war</type>
 		</dependency>	
-    -->
     </dependencies>
 
     <build>
@@ -102,44 +101,6 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <configuration>
-                    <assemblyArtifact>
-                        <groupId>${liberty.groupId}</groupId>
-                        <artifactId>${liberty.artifactId}</artifactId>
-                        <version>${version.openliberty-runtime}</version>
-                        <type>zip</type>
-                    </assemblyArtifact>
-                    <stripVersion>true</stripVersion>
-                    <serverStartTimeout>120</serverStartTimeout>
-                    <bootstrapProperties>
-                        <default.http.port>${http.port}</default.http.port>
-                        <default.https.port>${https.port}</default.https.port>
-                        <app.context.root>${app.name}</app.context.root>
-                    </bootstrapProperties>
-                </configuration>
-            </plugin>
-            <!-- Plugin to run unit tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${version.maven-surefire-plugin}</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <id>default-test</id>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/it/**</exclude>
-                            </excludes>
-                            <reportsDirectory>
-                                ${project.build.directory}/test-reports/unit
-                            </reportsDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <skipTests>${skipTests}</skipTests>
-                </configuration>
             </plugin>
         </plugins>
     </build>

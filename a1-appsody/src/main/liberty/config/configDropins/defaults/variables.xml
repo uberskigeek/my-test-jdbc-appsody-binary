@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server description="Boost variables">
+    <variable defaultValue="*" name="boost_http_host"/>
+    <variable defaultValue="9000" name="boost_http_port"/>
+    <variable defaultValue="9443" name="boost_http_securePort"/>
+    <variable defaultValue="3306" name="boost_db_portNumber"/>
+    <variable defaultValue="testdb" name="boost_db_databaseName"/>
+    <variable defaultValue="localhost" name="boost_db_serverName"/>
+    <variable defaultValue="mysql" name="boost_db_user"/>
+    <variable defaultValue="{aes}AL38H5t7Lb9oOY0NqQt5bWHTcQMM/z0wqwvDJDWLgZiA" name="boost_db_password"/>
+</server>
