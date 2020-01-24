@@ -12,7 +12,7 @@
   <version>1.0</version>
   <packaging>war</packaging>
 
-  <name>a1-war Maven Webapp</name>
+  <name>a1 war</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,7 +52,20 @@
   </dependencies>
 
   <build>
-    <finalName>a1-war</finalName>
-
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>default-war</id>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
