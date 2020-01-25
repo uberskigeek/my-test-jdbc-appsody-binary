@@ -8,10 +8,11 @@
         <feature>mpRestClient-1.1</feature>
     </featureManager>
     <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+    
 
     <application context-root="/" location="a1-war-1.0.war" type="war"/>
     <library id="Library1">
-        <fileset dir="resources" includes="mysql-connector-java-8.0.15.jar"/>
+        <fileset dir="resources" includes="${shared.resource.dir}/mysql-connector-java-8.0.15.jar"/>
     </library>
     <dataSource id="DefaultDataSource" jdbcDriverRef="JdbcDriver1">
         <properties databaseName="${boost_db_databaseName}" password="${boost_db_password}" portNumber="${boost_db_portNumber}" serverName="${boost_db_serverName}" user="${boost_db_user}"/>

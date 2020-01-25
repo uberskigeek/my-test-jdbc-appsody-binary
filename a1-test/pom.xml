@@ -40,106 +40,87 @@
             <version>2.8.5</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.15</version>
+            <scope>runtime</scope>
+        </dependency>
   </dependencies>
 
-      <profiles>
-        <!-- Profile to enable Derby as the database -->
-        <profile>
-            <id>derby</id>
-            <properties>
-                <db.includes>DerbyHealthCheckIT</db.includes>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.derby</groupId>
-                    <artifactId>derby</artifactId>
-                    <version>10.11.1.1</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <!-- Profile to enable MySQL as the database, and start it in a docker 
-            dontainer -->
-        <profile>
-            <id>mysql</id>
-            <properties>
-                <db.includes>MysqlHealthCheckIT</db.includes>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>8.0.15</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.fabric8</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <version>0.20.1</version>
-                        <configuration>
-                            <images>
-                                <image>
-                                    <alias>database</alias>
-                                    <name>mysql:8.0.15</name>
-                                    <run>
-                                        <wait>
-                                            <!-- There is a known issue in the plugin preventing any reasonable 
-                                                ability to wait for mysql to start when on Mac. Waiting 15 seconds does the 
-                                                trick for now -->
-                                            <time>30000</time>
-                                        </wait>
-                                        <env>
-                                            <MYSQL_ROOT_PASSWORD>abc123</MYSQL_ROOT_PASSWORD>
-                                            <MYSQL_DATABASE>testdb</MYSQL_DATABASE>
-                                            <MYSQL_USER>mysql</MYSQL_USER>
-                                            <MYSQL_PASSWORD>mysql</MYSQL_PASSWORD>
-                                        </env>
-                                        <ports>
-                                            <port>3306:3306</port>
-                                        </ports>
-                                    </run>
-                                </image>
-                            </images>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>docker:stop-before</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>docker:start</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>start</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>docker:stop-after</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-    </profiles>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.20.1</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <alias>database</alias>
+                            <name>mysql:8.0.15</name>
+                            <run>
+                                <wait>
+                                    <!-- There is a known issue in the plugin preventing any reasonable 
+                                        ability to wait for mysql to start when on Mac. Waiting 15 seconds does the 
+                                        trick for now -->
+                                    <time>30000</time>
+                                </wait>
+                                <env>
+                                    <MYSQL_ROOT_PASSWORD>abc123</MYSQL_ROOT_PASSWORD>
+                                    <MYSQL_DATABASE>testdb</MYSQL_DATABASE>
+                                    <MYSQL_USER>mysql</MYSQL_USER>
+                                    <MYSQL_PASSWORD>mysql</MYSQL_PASSWORD>
+                                </env>
+                                <ports>
+                                    <port>3306:3306</port>
+                                </ports>
+                            </run>
+                        </image>
+                        <image>
+                            <alias>open-liberty</alias>
+                            <name>dev.local/a1-appsody:latest</name>
+                            <run>
+                                <wait>
+                                    <time>15000</time>
+                                </wait>
+                                <ports>
+                                    <port>7777:7777</port>
+                                    <port>9080:9080</port>
+                                    <port>9443:9443</port>
+                                </ports>
+                            </run>
+                        </image>
+                    </images>
+                    <keepContainer>true</keepContainer>
+                    <!--
+-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>docker:stop-before</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>docker:start</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>docker:stop-after</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
