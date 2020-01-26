@@ -44,6 +44,11 @@
               <version>8.0.15</version>
               <scope>compile</scope>
           </dependency>
+          <dependency>
+              <groupId>org.eclipse.collections</groupId>
+              <artifactId>eclipse-collections</artifactId>
+              <version>10.1.0</version>
+          </dependency>
     </dependencies>
 
     <build>
@@ -63,7 +68,7 @@
                         <configuration>
                             <!-- put war dependency file in target after dependency resolution -->
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteReleases>true</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <excludeTransitive>true</excludeTransitive>
                             <includeTypes>war</includeTypes>

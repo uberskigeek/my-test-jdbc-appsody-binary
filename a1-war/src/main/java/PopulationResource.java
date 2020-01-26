@@ -25,6 +25,14 @@ public class PopulationResource {
 
     @GET
     @Produces("text/plain")
+    @Path("/msg")
+    public String getMessage() throws Exception, IOException {
+        Class clazz = Class.forName("org.eclipse.collections.impl.list.mutable.FastList");
+        return "ZZZZ SHARED LIB: Loaded class = " + clazz;
+    }
+
+    @GET
+    @Produces("text/plain")
     public String getInformation() throws Exception, IOException {
 
         String returnValue = null;
