@@ -93,23 +93,23 @@
                             </run>
                         </image>
                     </images>
-                    <keepContainer>true</keepContainer>
                     <!--
+                    <keepContainer>true</keepContainer>
 -->
                 </configuration>
                 <executions>
-                    <execution>
-                        <id>docker:stop-before</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                    </execution>
                     <execution>
                         <id>docker:start</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>docker:stop-before</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
                         </goals>
                     </execution>
                     <execution>
@@ -138,6 +138,7 @@
                             </systemPropertyVariables>
                             <includes>
                                 <include>**/EndpointIT.java</include>
+                                <include>**/MysqlHealthCheckIT.java</include>
                             </includes>
                         </configuration>
                     </execution>

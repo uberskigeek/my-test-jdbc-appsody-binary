@@ -21,6 +21,10 @@
     <library id="Library1">
         <fileset dir="${shared.resource.dir}" includes="mysql-connector-java-8.0.15.jar"/>
     </library>
+
+    <!-- WORKAROUND -->
+    <variable name="boost_db_serverName" value="172.17.0.2"/>
+
     <dataSource id="DefaultDataSource" jdbcDriverRef="JdbcDriver1">
         <properties databaseName="${boost_db_databaseName}" password="${boost_db_password}" portNumber="${boost_db_portNumber}" serverName="${boost_db_serverName}" user="${boost_db_user}"/>
     </dataSource>
