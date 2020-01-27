@@ -18,6 +18,7 @@
     <quickStartSecurity userName="apps" userPassword="ody"/>
 
     <application context-root="/" location="a1-war-1.0.war" type="war"/>
+
     <library id="Library1">
         <fileset dir="${shared.resource.dir}" includes="mysql-connector-java-8.0.15.jar"/>
     </library>

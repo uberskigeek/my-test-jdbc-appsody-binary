@@ -89,7 +89,7 @@
                             <includeGroupIds>mysql</includeGroupIds>
                         </configuration>
                     </execution>
-                    <!-- example of how to move a shared library dependency
+                    <!-- example of how to move a shared library dependency -->
                     <execution>
                         <id>copy-shared-library-artifacts</id>
                         <phase>package</phase>
@@ -97,14 +97,13 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/lib</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
+                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/lib/global</outputDirectory>
+                            <overWriteReleases>true</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
-                            <excludeTransitive>true</excludeTransitive>
                             <includeTypes>jar</includeTypes>
+                            <includeGroupIds>org.eclipse.collections</includeGroupIds>
                         </configuration>
                     </execution>
-                    -->
                 </executions>
             </plugin>
             <!-- Enable liberty-maven plugin -->
