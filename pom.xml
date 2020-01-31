@@ -10,5 +10,6 @@
     <module>a1-test</module>
     <module>a1-war</module>
     <module>a1-appsody</module>
+    <module>a1-appsody-war</module>
   </modules>
 </project>

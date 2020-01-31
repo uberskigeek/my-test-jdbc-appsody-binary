@@ -1,5 +1,3 @@
-/target/*
-app-deploy.yaml
 !.keep
 
 
@@ -28,4 +26,4 @@ app-deploy.yaml
 
 ### VS Code ###
 .vscode/
-/bin/
+/.apt_generated_tests/
