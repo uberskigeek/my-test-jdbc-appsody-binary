@@ -100,21 +100,21 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>docker:start</id>
+                        <id>start</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>start</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>docker:stop-before</id>
+                        <id>stop-before</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>stop</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>docker:stop-after</id>
+                        <id>stop-after</id>
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>stop</goal>

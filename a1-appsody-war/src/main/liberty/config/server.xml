@@ -10,20 +10,19 @@
         <!-- For connection validation -->
         <feature>appSecurity-2.0</feature>
         <feature>restConnector-2.0</feature>
-
     </featureManager>
 
     <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
 
     <quickStartSecurity userName="apps" userPassword="ody"/>
 
-    <application context-root="/" location="a1-war-1.0.war" type="war"/>
+    <application context-root="/" location="a1-appsody-war.war" type="war"/>
 
     <library id="Library1">
-        <fileset dir="${shared.resource.dir}" includes="mysql-connector-java-8.0.15.jar"/>
+        <fileset dir="${server.config.dir}/resources" includes="mysql-connector-java-8.0.15.jar"/>
     </library>
-
-    <!-- WORKAROUND -->
+    
+    <variable name="db.server" value="172.17.0.2"/>
 
     <dataSource id="DefaultDataSource" jdbcDriverRef="JdbcDriver1">
         <properties databaseName="${db.name}" password="${db.pwd}" portNumber="${db.port}" serverName="${db.server}" user="${db.user}"/>
