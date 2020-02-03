@@ -24,6 +24,7 @@
     </library>
 
     <!-- WORKAROUND -->
+    <variable name="db.server" value="172.17.0.2"/>
 
     <dataSource id="DefaultDataSource" jdbcDriverRef="JdbcDriver1">
         <properties databaseName="${db.name}" password="${db.pwd}" portNumber="${db.port}" serverName="${db.server}" user="${db.user}"/>
