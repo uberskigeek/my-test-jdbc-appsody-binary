@@ -171,13 +171,6 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>stop-before</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-					<execution>
 						<id>start</id>
 						<phase>pre-integration-test</phase>
 						<goals>
