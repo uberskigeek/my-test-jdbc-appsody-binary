@@ -18,11 +18,11 @@
   <name>a1-appsody</name>
 
     <properties>
-        <file.repo.name>migrationassets</file.repo.name>
+        <file.repo.name>assets</file.repo.name>
     </properties>
 
     <repositories>
-        <!--local migration assets repo-->
+        <!--local assets repo-->
         <repository>
             <id>project.local</id>
             <name>project</name>
