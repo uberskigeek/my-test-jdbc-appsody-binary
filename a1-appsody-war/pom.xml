@@ -17,6 +17,10 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 
+    <properties>
+        <wlp.user.dir>${wlp.install.dir}/usr</wlp.user.dir>
+    </properties>
+
 	<dependencies>
 		<!-- Aggregate of MicroProfile APIs -->
 		<dependency>
